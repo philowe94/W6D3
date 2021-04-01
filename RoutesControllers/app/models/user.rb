@@ -56,7 +56,10 @@ class User < ApplicationRecord
     has_many :favorite_share_artworks,
         through: :favorite_shares,
         source: :artwork
-
+        
+    has_many :collections,
+        foreign_key: :user_id,
+        class_name: :Collection
     validates :username, presence: true
     validates :username, uniqueness: true
 end

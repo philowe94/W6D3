@@ -40,6 +40,16 @@ class Artwork < ApplicationRecord
         through: :likes,
         source: :liker    
 
+    has_many :collection_artworks,
+    foreign_key: :artwork_id,
+    class_name: :CollectionArtwork
+
+    has_many :collections,
+    through: :collection_artworks,
+    source: :collection
+
+    
+
     # belongs_to :favorited_by, -> { where is_favorite?: true },
     # foreign_key: :artist_id,
     # class_name: :User

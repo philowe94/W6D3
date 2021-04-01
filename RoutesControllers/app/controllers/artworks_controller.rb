@@ -1,13 +1,16 @@
 class ArtworksController < ApplicationController
     def index
-        # artworks = Artwork.all
-        # render json: artworks
-
-        #return artworks owned by a user and        #artworks shared by a user
-
-        artworks = User.find(params[:user_id]).artworks
-        artworks += User.find(params[:user_id]).shared_artworks 
-        render json: artworks
+        if params[:user_id]
+            artworks = User.find(params[:user_id]).artworks
+            artworks += User.find(params[:user_id]).shared_artworks 
+            render json: artworks
+        elsif params[:collection_id]
+            artworks = Collection.find(params[:collection_id]).artworks
+            render json: artworks
+        else
+            artworks = Artwork.all
+            render json: artworks
+        end
     end
 
     def create
@@ -20,14 +23,8 @@ class ArtworksController < ApplicationController
     end
     
     def show
-        if params[:user_id]
-            artworks = User.find(params[:user_id]).artworks
-            artworks += User.find(params[:user_id]).shared_artworks 
-            render json: artworks[params[:id].to_i - 1]
-        else
-            artwork = Artwork.find(params[:id])
-            render json: artwork
-        end
+        artwork = Artwork.find(params[:id])
+        render json: artwork
     end
 
     def update
