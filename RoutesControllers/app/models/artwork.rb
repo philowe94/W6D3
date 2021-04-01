@@ -31,6 +31,13 @@ class Artwork < ApplicationRecord
     foreign_key: :artwork_id,
     class_name: :Comment
 
+    has_many :likes, as: :likeable,
+        foreign_key: :likeable_id,
+        class_name: :Like
+
+    has_many :liked_by,
+        through: :likes,
+        source: :liker    
 
     validates :title, presence: true
     validates :image_url, presence: true

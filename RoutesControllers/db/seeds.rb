@@ -26,3 +26,11 @@
     Comment.create(author_id: 2, artwork_id: 2, body: "Very nice!" )
     Comment.create(author_id: 3, artwork_id: 2, body: "Cool, nice!" )
     Comment.create(author_id: 2, artwork_id: 3, body: "Hideous" )
+
+    Like.create(liker_id: 1, likeable_id: 1, likeable_type: 'Comment')
+    Like.create(liker_id: 1, likeable_id: 3, likeable_type: 'Artwork')
+    Like.create(liker_id: 1, likeable_id: 2, likeable_type: 'Comment')
+    Like.create(liker_id: 2, likeable_id: 2, likeable_type: 'Artwork')
+    Like.create(liker_id: 2, likeable_id: 1, likeable_type: 'Comment')
+    Like.create(liker_id: 2, likeable_id: 3, likeable_type: 'Artwork')
+    Like.create(liker_id: 3, likeable_id: 2, likeable_type: 'Comment')

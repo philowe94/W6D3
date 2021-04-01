@@ -22,16 +22,28 @@ class User < ApplicationRecord
         class_name: :ArtworkShare
 
     has_many :shared_artworks,
-    through: :artwork_shares,
-    source: :artwork
+        through: :artwork_shares,
+        source: :artwork
 
     has_many :comments,
-    dependent: :destroy,
-    primary_key: :id,
-    foreign_key: :author_id,
-    class_name: :Comment
+        dependent: :destroy,
+        primary_key: :id,
+        foreign_key: :author_id,
+        class_name: :Comment
 
+    has_many :likes,
+        foreign_key: :liker_id,
+        class_name: :Like
+
+    has_many :liked_comments,
+        through: :likes,
+        source: :likeable,
+        source_type: 'Comment'
     
+    has_many :liked_artworks,
+        through: :likes,
+        source: :likeable,
+        source_type: 'Artwork'
 
     validates :username, presence: true
     validates :username, uniqueness: true
