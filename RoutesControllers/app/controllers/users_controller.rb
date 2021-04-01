@@ -38,6 +38,11 @@ class UsersController < ApplicationController
         render json: user
     end
 
+    def favorites
+        favorite = User.find(params[:id]).favorites
+        render json: favorite
+
+    end
     private
 
     def user_params

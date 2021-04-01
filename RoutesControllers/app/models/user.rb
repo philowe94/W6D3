@@ -45,6 +45,10 @@ class User < ApplicationRecord
         source: :likeable,
         source_type: 'Artwork'
 
+    has_many :favorites, -> { where is_favorite?: true },
+        foreign_key: :artist_id,
+        class_name: :Artwork
+
     validates :username, presence: true
     validates :username, uniqueness: true
 end
