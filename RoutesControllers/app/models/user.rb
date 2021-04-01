@@ -49,6 +49,14 @@ class User < ApplicationRecord
         foreign_key: :artist_id,
         class_name: :Artwork
 
+    has_many :favorite_shares, -> { where is_favorite?: true },
+        foreign_key: :viewer_id,
+        class_name: :ArtworkShare
+    
+    has_many :favorite_share_artworks,
+        through: :favorite_shares,
+        source: :artwork
+
     validates :username, presence: true
     validates :username, uniqueness: true
 end

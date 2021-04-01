@@ -39,9 +39,13 @@ class UsersController < ApplicationController
     end
 
     def favorites
-        favorite = User.find(params[:id]).favorites
-        render json: favorite
 
+        #both this and
+        favorites = User.find(params[:id]).favorites
+        #favorite shares
+        favorites += User.find(params[:id]).favorite_share_artworks
+
+        render json: favorites
     end
     private
 

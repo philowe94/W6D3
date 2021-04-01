@@ -12,14 +12,14 @@
     User.create(username: 'Picasso')
 
 
-    Artwork.create(title: 'Mona Lisa', image_url: 100, artist_id: User.find(1).id)
-    Artwork.create(title: 'Starry Night', image_url: 101, artist_id: User.find(2).id)
-    Artwork.create(title: 'Guernica', image_url: 102, artist_id: User.find(3).id)
+    Artwork.create(title: 'Mona Lisa', image_url: 100, artist_id: User.find(1).id, is_favorite?: true)
+    Artwork.create(title: 'Starry Night', image_url: 101, artist_id: User.find(2).id, is_favorite?: false)
+    Artwork.create(title: 'Guernica', image_url: 102, artist_id: User.find(3).id, is_favorite?: true)
 
-    ArtworkShare.create(artwork_id: Artwork.find(1).id, viewer_id: User.find(2).id)
-    ArtworkShare.create(artwork_id: Artwork.find(2).id, viewer_id: User.find(3).id)
-    ArtworkShare.create(artwork_id: Artwork.find(3).id, viewer_id: User.find(1).id)
-    ArtworkShare.create(artwork_id: Artwork.find(2).id, viewer_id: User.find(1).id)
+    ArtworkShare.create(artwork_id: Artwork.find(1).id, viewer_id: User.find(2).id, is_favorite?: true)
+    ArtworkShare.create(artwork_id: Artwork.find(2).id, viewer_id: User.find(3).id, is_favorite?: false)
+    ArtworkShare.create(artwork_id: Artwork.find(3).id, viewer_id: User.find(1).id, is_favorite?: true)
+    ArtworkShare.create(artwork_id: Artwork.find(2).id, viewer_id: User.find(1).id, is_favorite?: true)
 
 
     Comment.create(author_id: 1, artwork_id: 2, body: "Nice!" )
