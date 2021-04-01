@@ -60,6 +60,7 @@ class User < ApplicationRecord
     has_many :collections,
         foreign_key: :user_id,
         class_name: :Collection
+        
     validates :username, presence: true
     validates :username, uniqueness: true
 end
