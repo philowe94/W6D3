@@ -20,3 +20,9 @@
     ArtworkShare.create(artwork_id: Artwork.find(2).id, viewer_id: User.find(3).id)
     ArtworkShare.create(artwork_id: Artwork.find(3).id, viewer_id: User.find(1).id)
     ArtworkShare.create(artwork_id: Artwork.find(2).id, viewer_id: User.find(1).id)
+
+
+    Comment.create(author_id: 1, artwork_id: 2, body: "Nice!" )
+    Comment.create(author_id: 2, artwork_id: 2, body: "Very nice!" )
+    Comment.create(author_id: 3, artwork_id: 2, body: "Cool, nice!" )
+    Comment.create(author_id: 2, artwork_id: 3, body: "Hideous" )
